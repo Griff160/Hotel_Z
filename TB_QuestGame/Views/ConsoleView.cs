@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TB_QuestGame
 {
     /// <summary>
-    /// view class
+    /// Console view class
     /// </summary>
     public class ConsoleView
     {
