@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TB_QuestGame", "TB_QuestGame\TB_QuestGame.csproj", "{F03D0B1D-A1E7-41FB-8A70-2E60981B15F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel_Z", "TB_QuestGame\Hotel_Z.csproj", "{F03D0B1D-A1E7-41FB-8A70-2E60981B15F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{05A3FA17-B966-4D88-9555-A89190573BF0}"
 EndProject
