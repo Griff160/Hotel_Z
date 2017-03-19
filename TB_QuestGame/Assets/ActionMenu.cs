@@ -40,8 +40,8 @@ namespace TB_QuestGame
                     { '1', HeroAction.HeroInfo },
                     { '2', HeroAction.LookAround },
                     { '3', HeroAction.Travel },
-                    //{ '4', HeroAction.HeroLocationsVisited },
-                    //{ '5', HeroAction.ListRoomLocations },
+                    { '4', HeroAction.HeroLocationsVisited },
+                    { '5', HeroAction.ListRoomLocations },
                     { '0', HeroAction.Exit },
                 }
         };

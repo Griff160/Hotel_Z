@@ -77,6 +77,7 @@ namespace TB_QuestGame
             DisplayMessageBox(messageBoxHeaderText, messageBoxText);
             DisplayMenuBox(menu);
             DisplayInputBox();
+            DisplayStatusBox();
         }
 
         /// <summary>
@@ -477,6 +478,11 @@ namespace TB_QuestGame
             //
             DisplayGamePlayScreen("Hero Creation - Complete", Text.InitializeMissionEchoTravelerInfo(hero), ActionMenu.MissionIntro, "");
             GetContinueKey();
+
+            // 
+            // change view status to playing game
+            //
+            _viewStatus = ViewStatus.PlayingGame;
 
             return hero;
         }
