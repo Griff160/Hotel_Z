@@ -11,12 +11,25 @@ namespace TB_QuestGame
     /// </summary>
     public class ConsoleView
     {
+        #region ENUMS
+
+        private enum ViewStatus
+        {
+            TravelerInitialization,
+            PlayingGame
+        }
+
+        #endregion
+
         #region FIELDS
 
         //
         // declare game objects for the ConsoleView object to use
         //
         Hero _gameTraveler;
+        Hotel _gameHotel;
+
+        ViewStatus _viewStatus;
 
         #endregion
 
@@ -29,9 +42,12 @@ namespace TB_QuestGame
         /// <summary>
         /// default constructor to create the console view objects
         /// </summary>
-        public ConsoleView(Hero gameTraveler)
+        public ConsoleView(Hero gameTraveler, Hotel gameHotel)
         {
             _gameTraveler = gameTraveler;
+            _gameHotel = gameHotel;
+
+            _viewStatus = ViewStatus.TravelerInitialization;
 
             InitializeDisplay();
         }
@@ -78,13 +94,25 @@ namespace TB_QuestGame
         public HeroAction GetActionMenuChoice(Menu menu)
         {
             HeroAction choosenAction = HeroAction.None;
+            Console.CursorVisible = false;
+
+            //
+            // create an array of valid jeys from the menu dictionary
+            //
+            char[] validKeys = menu.MenuChoices.Keys.ToArray();
 
             //
             // TODO validate menu choices
             //
-            ConsoleKeyInfo keyPressedInfo = Console.ReadKey();
-            char keyPressed = keyPressedInfo.KeyChar;
+            char keyPressed;
+            do
+            {
+                ConsoleKeyInfo keyPressedInfo = Console.ReadKey(true);
+                keyPressed = keyPressedInfo.KeyChar;
+            } while (!validKeys.Contains(keyPressed));
+
             choosenAction = menu.MenuChoices[keyPressed];
+            Console.CursorVisible = true;
 
             return choosenAction;
         }

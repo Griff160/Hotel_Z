@@ -15,6 +15,7 @@ namespace TB_QuestGame
 
         private ConsoleView _gameConsoleView;
         private Hero _gameHero;
+        private Hotel _gameHotel; 
         private bool _playingGame;
 
         #endregion
@@ -49,7 +50,8 @@ namespace TB_QuestGame
         private void InitializeGame()
         {
             _gameHero = new Hero();
-            _gameConsoleView = new ConsoleView(_gameHero);
+            _gameHotel = new Hotel();
+            _gameConsoleView = new ConsoleView(_gameHero, _gameHotel);
             _playingGame = true;
 
             Console.CursorVisible = false;

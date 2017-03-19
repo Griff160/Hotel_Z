@@ -38,20 +38,14 @@ namespace TB_QuestGame
             MenuChoices = new Dictionary<char, HeroAction>()
                 {
                     { '1', HeroAction.HeroInfo },
-                    { '2', HeroAction.Exit }
+                    { '2', HeroAction.LookAround },
+                    { '3', HeroAction.Travel },
+                    //{ '4', HeroAction.HeroLocationsVisited },
+                    //{ '5', HeroAction.ListRoomLocations },
+                    { '0', HeroAction.Exit },
                 }
         };
 
-        //public static Menu ManageTraveler = new Menu()
-        //{
-        //    MenuName = "ManageTraveler",
-        //    MenuTitle = "Manage Hero",
-        //    MenuChoices = new Dictionary<char, PlayerAction>()
-        //            {
-        //                PlayerAction.MissionSetup,
-        //                PlayerAction.TravelerInfo,
-        //                PlayerAction.Exit
-        //            }
-        //};
+        
     }
 }
