@@ -35,16 +35,15 @@ namespace TB_QuestGame
         }
 
         /// <summary>
-        /// TODO change text about starting location
+        /// text about starting location
         /// </summary>
         /// <returns></returns>
         public static string CurrentLocationInfo()
         {
             string messageBoxText =
-            "You are now in the Norlon Corporation research facility located in " +
-            "the city of Heraklion on the north coast of Crete. You have passed through " +
-            "heavy security and descended an unknown number of levels to the top secret " +
-            "research lab for the Aion Project.\n" +
+                    "The 8th floor of the hotel. It is going to be a tough " +
+                    "ask to make it all the way to the street. Most of the rooms are inaccessible " +
+                    "due to a collapsed roof.\n" +
             " \n" +
             "\tChoose from the menu options to proceed.\n";
 
@@ -159,10 +158,7 @@ namespace TB_QuestGame
             //
             // display all locations
             //
-            //
-            // TODO Change RoomLocationID to RoomLocationID
-            // TODO Change CommonName
-            //
+
             string roomLocationList = null;
             foreach (RoomLocation roomLocation in roomLocations)
             {

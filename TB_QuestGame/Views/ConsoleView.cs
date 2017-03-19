@@ -102,9 +102,6 @@ namespace TB_QuestGame
             //
             char[] validKeys = menu.MenuChoices.Keys.ToArray();
 
-            //
-            // TODO validate menu choices
-            //
             char keyPressed;
             do
             {
@@ -463,7 +460,7 @@ namespace TB_QuestGame
             DisplayGamePlayScreen("Hero Creation - Age", Text.InitializeMissionGetTravelerAge(hero), ActionMenu.MissionIntro, "");
             int gameTravelerAge;
 
-            GetInteger($"Enter your age {hero.Name}: ", 0, 1000000, out gameTravelerAge);
+            GetInteger($"Enter your age {hero.Name}: ", 0, 150, out gameTravelerAge);
             hero.Age = gameTravelerAge;
 
             //

@@ -10,22 +10,18 @@ namespace TB_QuestGame
     {
         public static List<RoomLocation> RoomLocations = new List<RoomLocation>()
         {
-            //
-            // TODO switch to my location data
-            //
 
             new RoomLocation
             {
-                CommonName = "Aion Base Lab",
+                CommonName = "Floor 8",
                 RoomLocationID = 1,
-                UniversalDate = 386759,
-                UniversalLocation = "P-3, SS-278, G-2976, LS-3976",
-                Description = "The Norlon Corporation research facility located in " +
-                    "the city of Heraklion on the north coast of Crete and the top secret " +
-                    "research lab for the Aion Project.\n",
-                GeneralContents = "The lab is a large, well lit room, and staffed " +
-                    "by a small number of scientists, all wearing light blue uniforms with the " +
-                    "hydra-like Norlan Corporation logo. \n",
+                HotelLocation = "Floor 8",
+                Description = "The 8th floor of the hotel. It is going to be a tough " +
+                    "ask to make it all the way to the street. Most of the rooms are inaccessible " +
+                    "due to a collapsed roof.\n",
+                GeneralContents = "There is not much of use on this floor. I wish I would " +
+                    "have asked for a room on a lower floor. At least the zombies seem to not " +
+                    "have made it up here yet. \n",
                 Accessable = true,
                 ExperiencePoints = 10,
                 Lives = 0
@@ -33,44 +29,40 @@ namespace TB_QuestGame
 
             new RoomLocation
             {
-                CommonName = "Felandrian Plains",
+                CommonName = "Floor 7",
                 RoomLocationID = 2,
-                UniversalDate = 386759,
-                UniversalLocation = "P-2, SS-85, G-2976, LS-3976",
-                Description = "The Felandrian Plains are a common destination for tourist. " +
-                    "Located just north of the equatorial line on the planet of Corlon, they " +
-                    "provide excellent habitat for a rich ecosystem of flora and fauna.",
-                GeneralContents = "- stuff in the room -",
+                HotelLocation = "Floor 7",
+                Description = "The 7th floor is full of what looks like rooms from a " +
+                    "wedding party. There is a red shape in one of the rooms in the " +
+                    "distance.",
+                GeneralContents = "You can see what remains of a woman in a wedding dress, her remains half eaten." +
+                    "There is nothing of use on her body though. ",
                 Accessable = true,
-                ExperiencePoints = -10,
-                Lives = 0
-            },
-
-            new RoomLocation
-            {
-                CommonName = "Xantoria Market",
-                RoomLocationID = 3,
-                UniversalDate = 386759,
-                UniversalLocation = "P-6, SS-3978, G-2976, LS-3976",
-                Description = "The Xantoria market, once controlled by the Thorian elite, is now an " +
-                              "open market managed by the Xantorian Commerce Coop. It is a place " +
-                              "where many races from various systems trade goods.",
-                GeneralContents = "- stuff in the room -",
-                Accessable = false,
                 ExperiencePoints = 20,
                 Lives = 0
             },
 
             new RoomLocation
             {
-                CommonName = "Norlon Corporate Headquarters",
+                CommonName = "Floor 6",
+                RoomLocationID = 3,
+                HotelLocation = "Floor 6",
+                Description = "The 6th floor looks very similar to the others you have seen, " +
+                              "will you ever make it to the exit? ",
+                GeneralContents = "Most of the rooms are locked. There is a bell boy who is cowering in the corner. " +
+                    "He is rocking back and forth talking about the terrifying zombies",
+                Accessable = true,
+                ExperiencePoints = 20,
+                Lives = 0
+            },
+
+            new RoomLocation
+            {
+                CommonName = "Floor 5",
                 RoomLocationID = 4,
-                UniversalDate = 386759,
-                UniversalLocation = "P-3, SS-278, G-2976, LS-3976",
-                Description = "The Norlon Corporation Headquarters is located in just outside of Detroit Michigan." +
-                              "Norlon, founded in 1985 as a bio-tech company, is now a 36 billion dollar company " +
-                              "with huge holdings in defense and space research and development.",
-                GeneralContents = "- stuff in the room -",
+                HotelLocation = "Floor 5",
+                Description = "The 5th floor seems pretty boring... maybe I should look around. ",
+                GeneralContents = "The floor ended up being boring. There was nothing of note here.",
                 Accessable = true,
                 ExperiencePoints = 10,
                 Lives = 0
@@ -78,17 +70,63 @@ namespace TB_QuestGame
 
             new RoomLocation
             {
-                CommonName = "Northwestern Michigan College",
+                CommonName = "Floor 4",
                 RoomLocationID = 5,
-                UniversalDate = 2017,
-                UniversalLocation = "P-3, SS-1, G-1, LS-1",
-                Description = "Founded in 1951, Northwestern Michigan College, known as NMC to local residents, " +
-                              "is a community college in Traverse City, Grand Traverse County, Michigan.  " +
-                              "Its annual enrollment is around 5,100 students. ",
-                GeneralContents = "You find a magical textbook on C# programming and gain 1 life! ",
+                HotelLocation = "Floor 4",
+                Description = "I have a good feeling about this floor for some reason! ",
+                GeneralContents = "You find a sandwich and gain 1 life! ",
                 Accessable = true,
                 ExperiencePoints = 100,
                 Lives = 1
+            },
+
+            new RoomLocation
+            {
+                CommonName = "Floor 3",
+                RoomLocationID = 6,
+                HotelLocation = "Floor 3",
+                Description = "Just a typical floor in an uneventful hotel. " ,
+                GeneralContents = "Upon further inspection this floor is very eventful, considering there are " +
+                    "almost 30 half eaten bodies around. ",
+                Accessable = true,
+                ExperiencePoints = 10,
+                Lives = 0
+            },
+
+            new RoomLocation
+            {
+                CommonName = "Floor 2",
+                RoomLocationID = 7,
+                HotelLocation = "Floor 2",
+                Description = "Almost to the ground floor!",
+                GeneralContents = "You look in to the room and find a zombie who bites you! Removing a life from your total. ",
+                Accessable = true,
+                ExperiencePoints = -10,
+                Lives = -1
+            },
+
+            new RoomLocation
+            {
+                CommonName = "Floor 1",
+                RoomLocationID = 8,
+                HotelLocation = "Floor 1",
+                Description = "One more floor to go. I hope nothing bad will happen to me now that im this close. ",
+                GeneralContents = "You look in to the room and find a zombie who bites you! Removing a life from your total. ",
+                Accessable = true,
+                ExperiencePoints = 10,
+                Lives = -1
+            },
+
+            new RoomLocation
+            {
+                CommonName = "Ground Floor",
+                RoomLocationID = 9,
+                HotelLocation = "Ground Floor",
+                Description = "This is the exit!",
+                GeneralContents = "Now lets see if i can survive outside...",
+                Accessable = false,
+                ExperiencePoints = 10000,
+                Lives = 0
             }
         };
 

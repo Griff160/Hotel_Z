@@ -11,9 +11,8 @@ namespace TB_QuestGame
         #region FIELDS
 
         private string _commonName;
-        private int _spaceTimeLocationID; // must be a unique value for each object
-        private int _universalDate;
-        private string _universalLocation;
+        private int _roomLocationID; // must be a unique value for each object
+        private string _hotelLocation;
         private string _description;
         private string _generalContents;
         private bool _accessable;
@@ -32,20 +31,15 @@ namespace TB_QuestGame
 
         public int RoomLocationID
         {
-            get { return _spaceTimeLocationID; }
-            set { _spaceTimeLocationID = value; }
+            get { return _roomLocationID; }
+            set { _roomLocationID = value; }
         }
 
-        public int UniversalDate
-        {
-            get { return _universalDate; }
-            set { _universalDate = value; }
-        }
 
-        public string UniversalLocation
+        public string HotelLocation
         {
-            get { return _universalLocation; }
-            set { _universalLocation = value; }
+            get { return _hotelLocation; }
+            set { _hotelLocation = value; }
         }
 
         public string Description
