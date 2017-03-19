@@ -30,7 +30,7 @@ namespace TB_QuestGame
             set { _commonName = value; }
         }
 
-        public int SpaceTimeLocationID
+        public int RoomLocationID
         {
             get { return _spaceTimeLocationID; }
             set { _spaceTimeLocationID = value; }

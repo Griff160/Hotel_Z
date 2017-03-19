@@ -18,30 +18,70 @@ namespace TB_QuestGame
 
         #region FIELDS
 
+        private int _experiencePoints;
+        private int _health;
+        private int _lives;
+        private List<int> _roomLocationsVisited;
+
 
         #endregion
-        
+
         #region PROPERTIES
-        
+
+        public int ExperiencePoints
+        {
+            get { return _experiencePoints; }
+            set { _experiencePoints = value; }
+
+        }
+
+        public int Health
+        {
+            get { return _health; }
+            set { _health = value; }
+        }
+
+        public int Lives
+        {
+            get { return _lives; }
+            set { _lives = value; }
+        }
+
+        public List<int> RoomLocationsVisited
+        {
+            get { return _roomLocationsVisited; }
+            set { _roomLocationsVisited = value; }
+        }
 
         #endregion
-        
+
         #region CONSTRUCTORS
 
         public Hero()
         {
-
+            _roomLocationsVisited = new List<int>();
         }
 
-        public Hero(string name, ClassType race) : base(name, race)
+        public Hero(string name, ClassType race, int spaceTimeLocationID) : base(name, race, spaceTimeLocationID)
         {
-
+            _roomLocationsVisited = new List<int>();
         }
 
         #endregion
-        
+
         #region METHODS
-        
+
+        public bool HasVisited(int _roomLocationID)
+        {
+            if (RoomLocationsVisited.Contains(_roomLocationID))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         #endregion
     }

@@ -23,7 +23,8 @@ namespace TB_QuestGame
         HeroInfo,
         HeroInventory,
         HeroTreasure,
-        ListDestinations,
+        HeroLocationsVisited,
+        ListRoomLocations,
         ListItems,
         ListTreasures,
         Exit

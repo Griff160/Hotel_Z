@@ -144,30 +144,133 @@ namespace TB_QuestGame
             return messageBoxText;
         }
 
-        //public static string Travel(int currentSpaceTimeLocationId, List<SpaceTimeLocation> spaceTimeLocations)
-        //{
-        //    string messageBoxText =
-        //        $"{gameTraveler.Name}, Aion Base will need to know the name of the new location.\n" +
-        //        " \n" +
-        //        "Enter the ID number of your desired location from the table below.\n" +
-        //        " \n";
+        public static string ListRoomLocations(IEnumerable<RoomLocation> roomLocations)
+        {
+            string messageBoxText =
+                "Rooms\n" +
+                " \n" +
 
+                //
+                // display table header
+                //
+                "ID".PadRight(10) + "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) + "----------------------".PadRight(30) + "\n";
 
-        //    string spaceTimeLocationList = null;
+            //
+            // display all locations
+            //
+            //
+            // TODO Change RoomLocationID to RoomLocationID
+            // TODO Change CommonName
+            //
+            string roomLocationList = null;
+            foreach (RoomLocation roomLocation in roomLocations)
+            {
+                roomLocationList +=
+                    $"{roomLocation.RoomLocationID}".PadRight(10) +
+                    $"{roomLocation.CommonName}".PadRight(30) +
+                    Environment.NewLine;
+            }
 
-        //    foreach (SpaceTimeLocation spaceTimeLocation in spaceTimeLocations)
-        //    {
-        //        if (race != Character.ClassType.None)
-        //        {
-        //            raceList += $"\t{race}\n";
-        //        }
-        //    }
+            messageBoxText += roomLocationList;
 
-        //    messageBoxText += raceList;
+            return messageBoxText;
+        }
 
-        //    return messageBoxText;
-        //}
+        public static string LookAround(RoomLocation roomLocation)
+        {
+            string messageBoxText =
+                $"Current Location: {roomLocation.CommonName}\n" +
+                " \n" +
+                roomLocation.GeneralContents;
+
+            return messageBoxText;
+        }
+
+        public static string Travel(Hero gameHero, List<RoomLocation> roomLocations)
+        {
+            string messageBoxText =
+                $"{gameHero.Name}, Where would you like to travel to?\n" +
+                " \n" +
+                "Enter the ID number of your desired location from the table below.\n" +
+                " \n" +
+
+                //
+                // display table header
+                //
+                "ID".PadRight(10) + "Name".PadRight(30) + "Accessible".PadRight(10) + "\n" +
+                "---".PadRight(10) + "----------------------".PadRight(30) + "-------".PadRight(10) + "\n";
+
+            //
+            // display all locations except the current location
+            //
+            string roomLocationList = null;
+            foreach (RoomLocation roomLocation in roomLocations)
+            {
+                if (roomLocation.RoomLocationID != gameHero.RoomLocationID)
+                {
+                    roomLocationList +=
+                        $"{roomLocation.RoomLocationID}".PadRight(10) +
+                        $"{roomLocation.CommonName}".PadRight(30) +
+                        $"{roomLocation.Accessable}".PadRight(10) +
+                        Environment.NewLine;
+                }
+            }
+
+            messageBoxText += roomLocationList;
+
+            return messageBoxText;
+        }
+
+        public static string CurrentLocationInfo(RoomLocation roomLocation)
+        {
+            string messageBoxText =
+                $"Current Room: {roomLocation.CommonName}\n" +
+                " \n" +
+                roomLocation.Description;
+            return messageBoxText;
+        }
+
+        public static string VisitedLocations(IEnumerable<RoomLocation> roomLocations)
+        {
+            string messageBoxText =
+                "Rooms Visited\n" +
+                " \n" +
+
+                //
+                // display table header
+                //
+                "ID".PadRight(10) + "Name".PadRight(30) + "\n" +
+                "---".PadRight(10) + "----------------------".PadRight(30) + "\n";
+
+            //
+            // display all locations
+            //
+            string roomLocationList = null;
+            foreach (RoomLocation roomLocation in roomLocations)
+            {
+                roomLocationList +=
+                    $"{roomLocation.RoomLocationID}".PadRight(10) +
+                    $"{roomLocation.CommonName}".PadRight(30) +
+                    Environment.NewLine;
+            }
+
+            messageBoxText += roomLocationList;
+
+            return messageBoxText;
+        }
 
         #endregion
+
+        public static List<string> StatusBox(Hero hero)
+        {
+            List<string> statusBoxText = new List<string>();
+
+            statusBoxText.Add($"Experience Points: {hero.ExperiencePoints}\n");
+            statusBoxText.Add($"Health: {hero.Health}\n");
+            statusBoxText.Add($"Lives: {hero.Lives}\n");
+
+            return statusBoxText;
+        }
     }
 }

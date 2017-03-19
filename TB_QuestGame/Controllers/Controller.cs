@@ -17,6 +17,7 @@ namespace TB_QuestGame
         private Hero _gameHero;
         private Hotel _gameHotel; 
         private bool _playingGame;
+        private RoomLocation _currentLocation;
 
         #endregion
 
@@ -91,6 +92,7 @@ namespace TB_QuestGame
             //
             // prepare game play screen
             //
+            _currentLocation = _gameHotel.GetRoomLocationById(_gameHero.RoomLocationID);
             _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentLocationInfo(), ActionMenu.MainMenu, "");
 
             //
@@ -98,6 +100,14 @@ namespace TB_QuestGame
             //
             while (_playingGame)
             {
+                //
+                // process all flags, events, and stats
+                //
+                UpdateGameStatus();
+
+                //
+                // get next game action from player
+                //
                 HeroActionChoice = _gameConsoleView.GetActionMenuChoice(ActionMenu.MainMenu);
 
                 //
@@ -110,6 +120,31 @@ namespace TB_QuestGame
 
                     case HeroAction.HeroInfo:
                         _gameConsoleView.DisplayHeroInfo();
+                        break;
+
+                    case HeroAction.LookAround:
+                        _gameConsoleView.DisplayLookAround();
+                        break;
+
+                    case HeroAction.Travel:
+                        //
+                        // get new location choice and update the current location property
+                        //                        
+                        _gameHero.RoomLocationID = _gameConsoleView.DisplayGetNextRoomLocation();
+                        _currentLocation = _gameHotel.GetRoomLocationById(_gameHero.RoomLocationID);
+
+                        //
+                        // set the game play screen to the current location info format
+                        //
+                        _gameConsoleView.DisplayGamePlayScreen("Current Location", Text.CurrentLocationInfo(_currentLocation), ActionMenu.MainMenu, "");
+                        break;
+
+                    case HeroAction.HeroLocationsVisited:
+                        _gameConsoleView.DisplayLocationsVisited();
+                        break;
+
+                    case HeroAction.ListRoomLocations:
+                        _gameConsoleView.DisplayListOfRoomLocations();
                         break;
 
                     case HeroAction.Exit:
@@ -137,6 +172,32 @@ namespace TB_QuestGame
             _gameHero.Name = traveler.Name;
             _gameHero.Age = traveler.Age;
             _gameHero.Class = traveler.Class;
+            _gameHero.RoomLocationID = 1;
+
+            _gameHero.ExperiencePoints = 0;
+            _gameHero.Health = 100;
+            _gameHero.Lives = 3;
+        }
+
+        private void UpdateGameStatus()
+        {
+            if (!_gameHero.HasVisited(_currentLocation.RoomLocationID))
+            {
+                //
+                // add new location to the list of visited locations if this is a first visit
+                //
+                _gameHero.RoomLocationsVisited.Add(_currentLocation.RoomLocationID);
+
+                //
+                // update experience points for visiting locations
+                //
+                _gameHero.ExperiencePoints += _currentLocation.ExperiencePoints;
+
+                //
+                // update lives for visiting locations
+                //
+                _gameHero.Lives += _currentLocation.Lives;
+            }
         }
 
         #endregion

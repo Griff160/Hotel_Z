@@ -62,5 +62,13 @@ namespace TB_QuestGame
         public static int InputBoxHeight = 4;
         public static int InputBoxPositionLeft = 1;
         public static int InputBoxPositionTop = 28;
+
+        //
+        // status box configuration
+        //
+        public static int StatusBoxWidth = 37;
+        public static int StatusBoxHeight = 9;
+        public static int StatusBoxPositionLeft = 122;
+        public static int StatusBoxPositionTop = 23;
     }
 }

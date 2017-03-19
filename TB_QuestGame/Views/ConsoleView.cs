@@ -26,7 +26,7 @@ namespace TB_QuestGame
         //
         // declare game objects for the ConsoleView object to use
         //
-        Hero _gameTraveler;
+        Hero _gameHero;
         Hotel _gameHotel;
 
         ViewStatus _viewStatus;
@@ -44,7 +44,7 @@ namespace TB_QuestGame
         /// </summary>
         public ConsoleView(Hero gameTraveler, Hotel gameHotel)
         {
-            _gameTraveler = gameTraveler;
+            _gameHero = gameTraveler;
             _gameHotel = gameHotel;
 
             _viewStatus = ViewStatus.TravelerInitialization;
@@ -322,6 +322,64 @@ namespace TB_QuestGame
         }
 
         /// <summary>
+        /// draw the status box on the game screen
+        /// </summary>
+        public void DisplayStatusBox()
+        {
+            Console.BackgroundColor = ConsoleTheme.InputBoxBackgroundColor;
+            Console.ForegroundColor = ConsoleTheme.InputBoxBorderColor;
+
+            //
+            // display the outline for the status box
+            //
+            ConsoleWindowHelper.DisplayBoxOutline(
+                ConsoleLayout.StatusBoxPositionTop,
+                ConsoleLayout.StatusBoxPositionLeft,
+                ConsoleLayout.StatusBoxWidth,
+                ConsoleLayout.StatusBoxHeight);
+
+            //
+            // display the text for the status box if playing game
+            //
+            if (_viewStatus == ViewStatus.PlayingGame)
+            {
+                //
+                // display status box header with title
+                //
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBorderColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+                Console.SetCursorPosition(ConsoleLayout.StatusBoxPositionLeft + 2, ConsoleLayout.StatusBoxPositionTop + 1);
+                Console.Write(ConsoleWindowHelper.Center("Game Stats", ConsoleLayout.StatusBoxWidth - 4));
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBackgroundColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+
+                //
+                // display stats
+                //
+                int startingRow = ConsoleLayout.StatusBoxPositionTop + 3;
+                int row = startingRow;
+                foreach (string statusTextLine in Text.StatusBox(_gameHero))
+                {
+                    Console.SetCursorPosition(ConsoleLayout.StatusBoxPositionLeft + 3, row);
+                    Console.Write(statusTextLine);
+                    row++;
+                }
+            }
+            else
+            {
+                //
+                // display status box header without header
+                //
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBorderColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+                Console.SetCursorPosition(ConsoleLayout.StatusBoxPositionLeft + 2, ConsoleLayout.StatusBoxPositionTop + 1);
+                Console.Write(ConsoleWindowHelper.Center("", ConsoleLayout.StatusBoxWidth - 4));
+                Console.BackgroundColor = ConsoleTheme.StatusBoxBackgroundColor;
+                Console.ForegroundColor = ConsoleTheme.StatusBoxForegroundColor;
+            }
+        }
+
+        /// <summary>
         /// draw the input box on the game screen
         /// </summary>
         public void DisplayInputBox()
@@ -427,7 +485,73 @@ namespace TB_QuestGame
 
         public void DisplayHeroInfo()
         {
-            DisplayGamePlayScreen("Hero Information", Text.TravelerInfo(_gameTraveler), ActionMenu.MainMenu, "");
+            DisplayGamePlayScreen("Hero Information", Text.TravelerInfo(_gameHero), ActionMenu.MainMenu, "");
+        }
+
+        public void DisplayListOfRoomLocations()
+        {
+            DisplayGamePlayScreen("List: Rooms", Text.ListRoomLocations
+                (_gameHotel.RoomLocations), ActionMenu.MainMenu, "");
+        }
+
+        public void DisplayLookAround()
+        {
+            RoomLocation currentRoomLocation = _gameHotel.GetRoomLocationById
+                (_gameHero.RoomLocationID);
+            DisplayGamePlayScreen("Current Location:", Text.LookAround(currentRoomLocation), ActionMenu.MainMenu, "");
+        }
+
+        public int DisplayGetNextRoomLocation()
+        {
+            int roomLocationId = 0;
+            bool validRoomLocationId = false;
+
+            DisplayGamePlayScreen("Travel to a new Room", Text.Travel(_gameHero,
+                _gameHotel.RoomLocations), ActionMenu.MainMenu, "");
+
+            while (!validRoomLocationId)
+            {
+                //
+                // get an integer from the player
+                //
+                GetInteger($"Enter your new location {_gameHero.Name}: ", 1, _gameHotel.GetMaxRoomLocationId(), out
+                    roomLocationId);
+
+                //
+                // validate integer as a valid space-time location id and determine accessibility
+                //
+                if (_gameHotel.IsValidRoomLocationId(roomLocationId))
+                {
+                    if (_gameHotel.GetRoomLocationById(roomLocationId).Accessable)
+                    {
+                        validRoomLocationId = true;
+                    }
+                    else
+                    {
+                        ClearInputBox();
+                        DisplayInputErrorMessage("It appears you are attempting to travel to an inaccessible location. Please try again.");
+                    }
+                }
+                else
+                {
+                    DisplayInputErrorMessage("It appears you entered an invalid room location id. Please try again.");
+                }
+            }
+            return roomLocationId;
+        }
+
+        public void DisplayLocationsVisited()
+        {
+            //
+            // generate a list of space time locations that have been visited
+            //
+            List<RoomLocation> visitedRoomLocations = new List<RoomLocation>();
+            foreach (int roomLocationId in _gameHero.RoomLocationsVisited)
+            {
+                visitedRoomLocations.Add(_gameHotel.GetRoomLocationById(roomLocationId));
+            }
+            DisplayGamePlayScreen("Rooms visited", Text.VisitedLocations
+                (visitedRoomLocations), ActionMenu.MainMenu, "");
         }
 
         #endregion
