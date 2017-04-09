@@ -1,0 +1,6 @@
+C:\Users\chewi\Desktop\Hotel_Z-master\Hotel_Z-master\TB_QuestGame\obj\Debug\Hotel_Z.csprojResolveAssemblyReference.cache
+C:\Users\chewi\Desktop\Hotel_Z-master\Hotel_Z-master\TB_QuestGame\bin\Debug\TB_QuestGame.exe.config
+C:\Users\chewi\Desktop\Hotel_Z-master\Hotel_Z-master\TB_QuestGame\bin\Debug\TB_QuestGame.exe
+C:\Users\chewi\Desktop\Hotel_Z-master\Hotel_Z-master\TB_QuestGame\bin\Debug\TB_QuestGame.pdb
+C:\Users\chewi\Desktop\Hotel_Z-master\Hotel_Z-master\TB_QuestGame\obj\Debug\TB_QuestGame.exe
+C:\Users\chewi\Desktop\Hotel_Z-master\Hotel_Z-master\TB_QuestGame\obj\Debug\TB_QuestGame.pdb
